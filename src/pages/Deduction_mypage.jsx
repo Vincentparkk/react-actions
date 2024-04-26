@@ -1,4 +1,5 @@
 import styles from "./Deduction_mypage.module.scss";
+import { Link } from "react-router-dom";
 
 export default function Deduction_mypage() {
   return (
@@ -14,7 +15,13 @@ export default function Deduction_mypage() {
         <p className={styles.email}>admin@postech.ac.kr</p>
       </div>
 
-      <p className={styles.option}>개인정보 수정</p>
+      <p className={styles.option}>
+        <Link to="/deduction_home/deduction_mypage_modify">
+          <button>
+            <p>개인정보수정</p>
+          </button>
+        </Link>
+      </p>
       <p className={styles.option}>설정</p>
       <p className={styles.option}>고객센터</p>
 
