@@ -3,6 +3,7 @@ import { FaMeteor } from "react-icons/fa";
 import postechImage from "./postechimage.png";
 import styled from "styled-components";
 import styles from "./Deduction_home.module.scss";
+import BackButton from "./Back_button";
 
 export default function Deduction_home() {
   const ProgressBar = styled.div`
@@ -29,7 +30,11 @@ export default function Deduction_home() {
 
   return (
     <>
-      <h1 className={styles.title}>의료공제탭</h1>
+      <div className={styles.top}>
+        <BackButton></BackButton>
+        <h1 className={styles.title}>의료공제탭</h1>
+      </div>
+
       <div className={styles.Bar}>
         <label style={{ paddingBottom: 30, fontSize: 30 }}>2024년-1학기</label>
         <label>전체 수혜금액 - 10만원</label>

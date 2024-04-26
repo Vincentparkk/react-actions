@@ -2,6 +2,7 @@ import styles from "./Deduction_apply2.module.scss";
 import { useState, useEffect } from "react";
 import Checkbox from "./Checkbox";
 import { Link } from "react-router-dom";
+import BackButton from "./Back_button";
 
 export default function Deduction_apply2(props) {
   const selectDepartmentList = [
@@ -168,7 +169,11 @@ export default function Deduction_apply2(props) {
 
   return (
     <>
-      <h1 className={styles.title}>신청정보기입</h1>
+      <div className={styles.top}>
+        <BackButton />
+        <h1 className={styles.title}>신청정보기입</h1>
+      </div>
+
       <div className={styles.center}>
         <Checkbox checked={info} onChange={setInfo}>
           이전 신청 정보와 동일

@@ -1,3 +1,4 @@
+import BackButton from "./Back_button";
 import styles from "./Deduction_mypage.module.scss";
 import { Link } from "react-router-dom";
 
@@ -5,6 +6,7 @@ export default function Deduction_mypage() {
   return (
     <>
       <div className={styles.top}>
+        <BackButton />
         <p className={styles.title}>마이페이지</p>
       </div>
       <div className={styles.bodyOne}>

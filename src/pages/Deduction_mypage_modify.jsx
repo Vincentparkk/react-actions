@@ -1,6 +1,7 @@
 import styles from "./Deduction_mypage_modify.module.scss";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import BackButton from "./Back_button";
 
 export default function Deduction_mypage_modify(props) {
   const selectDepartmentList = [
@@ -116,7 +117,11 @@ export default function Deduction_mypage_modify(props) {
 
   return (
     <>
-      <h1 className={styles.title}>개인정보수정</h1>
+      <div className={styles.top}>
+        <BackButton />
+        <h1 className={styles.title}>개인정보수정</h1>
+      </div>
+
       <div className={styles.center}>
         <form className={styles.container}>
           <div className={styles.subTitle}>

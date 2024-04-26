@@ -2,13 +2,18 @@ import styles from "./Deduction_apply1.module.scss";
 import { useState } from "react";
 import Checkbox from "./Checkbox";
 import { Link } from "react-router-dom";
+import BackButton from "./Back_button";
 
 export default function Deduction_apply1() {
   const [service, setService] = useState(false);
 
   return (
     <>
-      <h1 className={styles.title}>의료공제신청</h1>
+      <div className={styles.top}>
+        <BackButton />
+        <h1 className={styles.title}>의료공제신청</h1>
+      </div>
+
       <div className={styles.center}>
         <h1>의료공제회 규약 제 4장 의료보조금 지급</h1>
         <h1>제4장 의료보조금 지급</h1>
