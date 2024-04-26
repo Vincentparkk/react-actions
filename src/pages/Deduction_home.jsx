@@ -52,7 +52,7 @@ export default function Deduction_home() {
         </div>
       </div>
       <div className={styles.DeductionIcon}>
-        <Link to="about">
+        <Link to="deduction_apply1">
           <button>
             <FaMeteor size="20" color="black"></FaMeteor>
             <p>신청</p>

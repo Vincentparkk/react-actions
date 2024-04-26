@@ -1,0 +1,99 @@
+.title {
+  font-size: 40px;
+}
+
+.center {
+  flex: 1;
+  height: 75vh;
+  background: #e7e4e0;
+  overflow-y: scroll;
+  text-align: left;
+  padding: 10px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat(20, 40px);
+  gap: 10px;
+  padding: 10px;
+}
+.container > div {
+  width: 100%;
+  height: 100%;
+}
+
+.containerReason {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat(1, 80px);
+  gap: 10px;
+  padding: 10px;
+  padding-top: 0px;
+}
+.containerReason > div {
+  width: 100%;
+  height: 100%;
+}
+
+.containerSignature {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat(1, 40px);
+  gap: 10px;
+  padding: 10px;
+  padding-top: 0px;
+}
+.containerSignature > div {
+  width: 100%;
+  height: 100%;
+}
+
+.subTitle {
+  font-size: medium;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 정렬 */
+  align-items: center; /* 수평 정렬 */
+  border-right: 1px solid;
+  border-color: black;
+}
+
+.subInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 정렬 */
+  align-items: left; /* 수평 정렬 */
+  height: 100%;
+}
+
+.reasonText {
+  width: 100%;
+  height: 6.25em;
+  resize: none;
+  border: 2px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+}
+
+.subCheckBox {
+  display: "flex";
+}
+
+.inputStyle {
+  height: 27px;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+}
+
+h1 {
+  font-size: large;
+}
+
+h2 {
+  font-size: medium;
+}
+
+p {
+  font-size: small;
+}
