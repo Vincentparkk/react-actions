@@ -41,6 +41,7 @@ export default function Deduction_apply2(props) {
   const [studentId, setStudentId] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [bank, setBank] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
   const [price, setPrice] = useState("");
   const [treatmentDate, setTreatmentDate] = useState("");
@@ -76,6 +77,7 @@ export default function Deduction_apply2(props) {
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handleTreatmentDateChange = (event) =>
     setTreatmentDate(event.target.value);
+  const handleBankChange = (event) => setBank(event.target.value);
   const handleAccountNumberChange = (event) =>
     setAccountNumber(event.target.value);
   const handlePriceChange = (event) => setPrice(event.target.value);
@@ -103,6 +105,7 @@ export default function Deduction_apply2(props) {
       studentId !== "" &&
       phoneNumber !== "" &&
       email !== "" &&
+      bank !== "" &&
       accountNumber !== "" &&
       price !== "" &&
       treatmentDate !== "" &&
@@ -125,6 +128,7 @@ export default function Deduction_apply2(props) {
     studentId: "20190000",
     phoneNumber: "01000000000",
     email: "포스텍@postech.ac.kr",
+    bank: "포항은행",
     accountNumber: "1111111111222222",
     selectedDepartment: "산업경영공학과",
     selectedSex: "남자",
@@ -141,6 +145,7 @@ export default function Deduction_apply2(props) {
       setStudentId(previousInfo.studentId);
       setPhoneNumber(previousInfo.phoneNumber);
       setEmail(previousInfo.email);
+      setBank(previousInfo.bank);
       setAccountNumber(previousInfo.accountNumber);
       setSelectedDepartment(previousInfo.selectedDepartment);
       setSelectedSex(previousInfo.selectedSex);
@@ -152,6 +157,7 @@ export default function Deduction_apply2(props) {
       setStudentId("");
       setPhoneNumber("");
       setEmail("");
+      setBank("");
       setAccountNumber("");
       setSelectedDepartment("");
       setSelectedSex("");
@@ -277,6 +283,17 @@ export default function Deduction_apply2(props) {
                 </option>
               ))}
             </select>
+          </div>
+          <div className={styles.subTitle}>
+            <label>은행</label>
+          </div>
+          <div className={styles.subInput}>
+            <input
+              className={styles.inputStyle}
+              type="text"
+              value={bank}
+              onChange={handleBankChange}
+            />
           </div>
           <div className={styles.subTitle}>
             <label>계좌번호</label>

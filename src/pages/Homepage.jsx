@@ -7,6 +7,7 @@ import Deduction_apply3 from "./Deduction_apply3";
 import Deduction_history from "./Deduction_history";
 import Deduction_mypage from "./Deduction_mypage";
 import Deduction_mypage_modify from "./Deduction_mypage_modify";
+import Deduction_mypage_modify_success from "./Deduction_mypage_modify_success";
 import Health_home from "./Health_home";
 import Card from "./Card";
 import Login from "./Loginpage";
@@ -43,6 +44,10 @@ function Homepage() {
           <Route
             path="deduction_home/deduction_mypage_modify"
             element={<Deduction_mypage_modify />}
+          />
+          <Route
+            path="deduction_home/deduction_mypage_modify_success"
+            element={<Deduction_mypage_modify_success />}
           />
           <Route path="health" element={<Health_home />} />
         </Routes>
