@@ -5,8 +5,8 @@ function Card() {
   return (
     <>
       <p>Card</p>
-      <Link to="deduction_home">Deduction_home</Link>
-      <Link to="health">Health</Link>
+      <Link to="/deduction_home">Deduction_home</Link>
+      <Link to="/health">Health</Link>
     </>
   );
 }

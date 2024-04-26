@@ -8,14 +8,17 @@ import Deduction_history from "./Deduction_history";
 import Deduction_mypage from "./Deduction_mypage";
 import Health_home from "./Health_home";
 import Card from "./Card";
+import Login from "./Loginpage";
 
 function Homepage() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="react-actions">
+        <Link to="/">to login</Link>
         <Routes>
-          <Route path="/" element={<Card />} />
-          <Route path="deduction_home" element={<Deduction_home />} />
+          <Route path="/" element={<Login />} />
+          <Route path="card" element={<Card />} />
+          <Route path="/deduction_home" element={<Deduction_home />} />
           <Route
             path="deduction_home/deduction_apply1"
             element={<Deduction_apply1 />}
@@ -38,10 +41,6 @@ function Homepage() {
           />
           <Route path="health" element={<Health_home />} />
         </Routes>
-
-        <Link to="/">Card</Link>
-        <Link to="deduction_home">Deduction_home</Link>
-        <Link to="health">Health</Link>
       </BrowserRouter>
     </>
   );
