@@ -58,14 +58,18 @@ export default function Deduction_home() {
             <p>신청</p>
           </button>
         </Link>
-        <button>
-          <FaMeteor size="20" color="black"></FaMeteor>
-          <p>신청현황/내역</p>
-        </button>
-        <button>
-          <FaMeteor size="20" color="black"></FaMeteor>
-          <p>마이페이지</p>
-        </button>
+        <Link to="deduction_history">
+          <button>
+            <FaMeteor size="20" color="black"></FaMeteor>
+            <p>신청현황/내역</p>
+          </button>
+        </Link>
+        <Link to="deduction_mypage">
+          <button>
+            <FaMeteor size="20" color="black"></FaMeteor>
+            <p>마이페이지</p>
+          </button>
+        </Link>
       </div>
       <div>
         <h3>의료공제회 홈페이지</h3>
