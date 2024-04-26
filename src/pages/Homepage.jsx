@@ -31,9 +31,6 @@ function Homepage() {
 
         <Link to="/">Card</Link>
         <Link to="deduction_home">Deduction_home</Link>
-        <Link to="deduction_home/deduction_apply1">Deduction_apply1</Link>
-        <Link to="deduction_home/deduction_apply2">Deduction_apply2</Link>
-        <Link to="deduction_home/deduction_apply3">Deduction_apply3</Link>
         <Link to="health">Health</Link>
       </BrowserRouter>
     </>

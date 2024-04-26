@@ -117,15 +117,6 @@ export default function Deduction_apply2(props) {
       selectedDegree !== ""
     );
   };
-  // const buttonClickToApply3 = () => {
-  //   if (isFormFilled()) {
-  //     // 모든 입력값이 비어 있지 않으면 다음 단계로 진행
-  //     window.location.href = "/apply3";
-  //   } else {
-  //     // 모든 입력값이 비어 있으면 사용자에게 알림을 표시하거나 작업을 수행
-  //     alert("모든 정보를 입력해주세요.");
-  //   }
-  // };
 
   //이전 정보 사용을 클릭하면
   // 이전 정보 상태
