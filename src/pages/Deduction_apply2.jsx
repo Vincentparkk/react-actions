@@ -450,7 +450,10 @@ export default function Deduction_apply2(props) {
       </div>
       <article>
         <footer>
-          <Link to="/apply3" disabled={!isFormFilled()}>
+          <Link
+            to="/deduction_home/deduction_apply3"
+            disabled={!isFormFilled()}
+          >
             <button disabled={!isFormFilled()}>
               <p>신청</p>
             </button>

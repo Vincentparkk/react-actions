@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Deduction_home from "./Deduction_home";
 import Deduction_apply1 from "./Deduction_apply1";
 import Deduction_apply2 from "./Deduction_apply2";
+import Deduction_apply3 from "./Deduction_apply3";
 import Health_home from "./Health_home";
 import Card from "./Card";
 
@@ -21,6 +22,10 @@ function Homepage() {
             path="deduction_home/deduction_apply2"
             element={<Deduction_apply2 />}
           />
+          <Route
+            path="deduction_home/deduction_apply3"
+            element={<Deduction_apply3 />}
+          />
           <Route path="health" element={<Health_home />} />
         </Routes>
 
@@ -28,6 +33,7 @@ function Homepage() {
         <Link to="deduction_home">Deduction_home</Link>
         <Link to="deduction_home/deduction_apply1">Deduction_apply1</Link>
         <Link to="deduction_home/deduction_apply2">Deduction_apply2</Link>
+        <Link to="deduction_home/deduction_apply3">Deduction_apply3</Link>
         <Link to="health">Health</Link>
       </BrowserRouter>
     </>
