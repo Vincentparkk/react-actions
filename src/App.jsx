@@ -5,7 +5,6 @@ import Homepage from "./pages/Homepage";
 function App() {
   return (
     <>
-      <p>안녕</p>
       <Homepage />
     </>
   );
