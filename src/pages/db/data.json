@@ -1,7 +1,7 @@
 {
   "personalInfo": [
     {
-      "id": "8740",
+      "id": "8d97",
       "name": "박산경",
       "studentId": "20190000",
       "phoneNumber": "01012345678",
@@ -15,37 +15,26 @@
   ],
   "previousApply": [
     {
-      "name": "박산경",
-      "studentId": "20190000",
+      "id": "16b6",
+      "name": "박효빈",
+      "studentId": "20190989",
       "phoneNumber": "01012341234",
-      "email": "ime.park@postech.ac.kr",
-      "bank": "포항은행",
-      "accountNumber": "05427912341234",
-      "selectedDepartment": "산업경영공학과",
+      "email": "12341234",
+      "bank": "12314",
+      "accountNumber": "1234",
+      "selectedDepartment": "반도체공학과",
       "selectedSex": "남자",
       "selectedApplyType": "일반청구",
-      "selectedDegree": "학사",
-      "id": "0"
+      "selectedDegree": "석사"
     }
   ],
   "applyItem": [
     {
-      "id": "1",
-      "title": 111,
-      "createAt": 5.2,
-      "username": "postech"
-    },
-    {
-      "id": "2",
-      "title": 222,
-      "createAt": 6.2,
-      "username": "kaist"
-    },
-    {
-      "id": "3",
-      "title": 333,
-      "createAt": 8.2,
-      "username": "SNU"
+      "id": 1,
+      "title": "포항병원",
+      "createAt": "지급완료",
+      "username": "20.10.10",
+      "price": "100000"
     }
   ]
 }

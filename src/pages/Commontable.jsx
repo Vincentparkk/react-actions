@@ -1,8 +1,20 @@
 import styles from "./Commontable.module.scss";
-import dummy from "./db/data.json";
+import { useState, useEffect } from "react";
 
 export default function Commontable(props) {
-  const { headersName, children } = props;
+  const { headersName } = props;
+
+  const [historyT, setHistoryT] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5174/applyItem")
+      .then((res) => res.json())
+      .then((data) => {
+        setHistoryT(data); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
+      });
+  }, []);
+
+  console.log(historyT);
 
   return (
     <table className={styles.commonTable}>
@@ -18,7 +30,7 @@ export default function Commontable(props) {
         </tr>
       </thead>
       <tbody>
-        {dummy.applyItem.map((item) => (
+        {historyT.map((item) => (
           <tr className={styles.commonTableRow}>
             <td className={styles.commonTableColumn}>{item.id}</td>
             <td className={styles.commonTableColumn}>{item.title}</td>

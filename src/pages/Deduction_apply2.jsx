@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Checkbox from "./Checkbox";
 import { Link } from "react-router-dom";
 import BackButton from "./Back_button";
-import dummy from "./db/data.json";
 
 export default function Deduction_apply2(props) {
   const selectDepartmentList = [
@@ -125,22 +124,67 @@ export default function Deduction_apply2(props) {
 
   //이전 정보 사용을 클릭하면
   // 이전 정보 상태
-  const previousApply = dummy.previousApply[0];
-
+  const [applyT, setApplyT] = useState({});
   const [previousInfo, setPreviousInfo] = useState({
-    name: previousApply.name,
-    studentId: previousApply.studentId,
-    phoneNumber: previousApply.phoneNumber,
-    email: previousApply.email,
-    bank: previousApply.bank,
-    accountNumber: previousApply.accountNumber,
-    selectedDepartment: previousApply.selectedDepartment,
-    selectedSex: previousApply.selectedSex,
-    selectedApplyType: previousApply.selectedApplyType,
-    selectedDegree: previousApply.selectedDegree,
+    name: "",
+    studentId: "",
+    phoneNumber: "",
+    email: "",
+    bank: "",
+    accountNumber: "",
+    selectedDepartment: "",
+    selectedSex: "",
+    selectedApplyType: "",
+    selectedDegree: "",
   });
+  const [beforeId, setBeforeId] = useState("");
+  const [length, setLength] = useState(0);
+  useEffect(() => {
+    fetch("http://localhost:5174/previousApply")
+      .then((res) => res.json())
+      .then((data) => {
+        setApplyT(data[0]); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
+        setBeforeId(data[0].id);
+      });
+  }, []);
+  useEffect(() => {
+    fetch("http://localhost:5174/applyItem")
+      .then((res) => res.json())
+      .then((data) => {
+        setLength(data.length + 1);
+      });
+  }, []);
+  useEffect(() => {
+    if (applyT && Object.keys(applyT).length > 0) {
+      setPreviousInfo({
+        name: applyT.name,
+        studentId: applyT.studentId,
+        phoneNumber: applyT.phoneNumber,
+        email: applyT.email,
+        bank: applyT.bank,
+        accountNumber: applyT.accountNumber,
+        selectedDepartment: applyT.selectedDepartment,
+        selectedSex: applyT.selectedSex,
+        selectedApplyType: applyT.selectedApplyType,
+        selectedDegree: applyT.selectedDegree,
+      });
+    }
+  }, [applyT]);
 
-  const [info, setInfo] = useState(false);
+  useEffect(() => {
+    setName(previousInfo.name);
+    setStudentId(previousInfo.studentId);
+    setPhoneNumber(previousInfo.phoneNumber);
+    setEmail(previousInfo.email);
+    setBank(previousInfo.bank);
+    setAccountNumber(previousInfo.accountNumber);
+    setSelectedDepartment(previousInfo.selectedDepartment);
+    setSelectedSex(previousInfo.selectedSex);
+    setSelectedApplyType(previousInfo.selectedApplyType);
+    setSelectedDegree(previousInfo.selectedDegree);
+  }, [previousInfo]); // previousInfo가 변할 때(서버에서 데이터 받을 때)마다 변경
+
+  const [info, setInfo] = useState(true);
 
   useEffect(() => {
     // 이전 정보와 동일을 체크하면 이전 정보를 입력하기
@@ -169,6 +213,90 @@ export default function Deduction_apply2(props) {
       setSelectedDegree("");
     }
   }, [info]); // info 상태 변경 시에만 useEffect 실행
+
+  function save() {
+    const saveInfo = {
+      name: name,
+      studentId: studentId,
+      phoneNumber: phoneNumber,
+      email: email,
+      bank: bank,
+      accountNumber: accountNumber,
+      selectedDepartment: selectedDepartment,
+      selectedSex: selectedSex,
+      selectedApplyType: selectedApplyType,
+      selectedDegree: selectedDegree,
+    };
+    const saveApplyInfo = {
+      id: length,
+      title: hospital,
+      createAt: "지급완료",
+      username: treatmentDate,
+      price: price,
+    };
+    console.log(saveInfo, "이건?");
+    console.log(beforeId);
+    fetch("http://localhost:5174/previousApply", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(saveInfo),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok " + res.status);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Data saved:", data);
+      })
+      .catch((error) => {
+        console.error("Failed to save data:", error);
+      });
+
+    fetch("http://localhost:5174/applyItem", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(saveApplyInfo),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok " + res.status);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Data saved:", data);
+      })
+      .catch((error) => {
+        console.error("Failed to save data:", error);
+      });
+  }
+
+  function del() {
+    fetch(`http://localhost:5174/previousApply/${beforeId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok " + res.status);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Data deleted:", data);
+      })
+      .catch((error) => {
+        console.error("Failed to delete data:", error);
+      });
+  }
 
   return (
     <>
@@ -470,7 +598,13 @@ export default function Deduction_apply2(props) {
             to="/deduction_home/deduction_apply3"
             disabled={!isFormFilled()}
           >
-            <button disabled={!isFormFilled()}>
+            <button
+              disabled={!isFormFilled()}
+              onClick={() => {
+                save();
+                del();
+              }}
+            >
               <p>신청</p>
             </button>
           </Link>
