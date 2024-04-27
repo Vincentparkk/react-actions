@@ -140,7 +140,7 @@ export default function Deduction_apply2(props) {
   const [beforeId, setBeforeId] = useState("");
   const [length, setLength] = useState(0);
   useEffect(() => {
-    fetch("https://testdata1.vercel.app//previousApply")
+    fetch("https://testdata1.vercel.app/previousApply")
       .then((res) => res.json())
       .then((data) => {
         setApplyT(data[0]); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
