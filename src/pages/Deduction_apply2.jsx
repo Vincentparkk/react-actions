@@ -140,7 +140,7 @@ export default function Deduction_apply2(props) {
   const [beforeId, setBeforeId] = useState("");
   const [length, setLength] = useState(0);
   useEffect(() => {
-    fetch("http://localhost:5174/previousApply")
+    fetch("https://quill-wakeful-headline.glitch.me/previousApply")
       .then((res) => res.json())
       .then((data) => {
         setApplyT(data[0]); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
@@ -148,7 +148,7 @@ export default function Deduction_apply2(props) {
       });
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5174/applyItem")
+    fetch("https://quill-wakeful-headline.glitch.me/applyItem")
       .then((res) => res.json())
       .then((data) => {
         setLength(data.length + 1);
@@ -236,7 +236,7 @@ export default function Deduction_apply2(props) {
     };
     console.log(saveInfo, "이건?");
     console.log(beforeId);
-    fetch("https://github.com/Vincentparkk/testdata/previousApply", {
+    fetch("https://quill-wakeful-headline.glitch.me/previousApply", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -256,7 +256,7 @@ export default function Deduction_apply2(props) {
         console.error("Failed to save data:", error);
       });
 
-    fetch("https://github.com/Vincentparkk/testdata/applyItem", {
+    fetch("https://quill-wakeful-headline.glitch.me/applyItem", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -279,7 +279,7 @@ export default function Deduction_apply2(props) {
 
   function del() {
     fetch(
-      `https://github.com/Vincentparkk/testdata/previousApply/${beforeId}`,
+      `https://quill-wakeful-headline.glitch.me/previousApply/${beforeId}`,
       {
         method: "DELETE",
         headers: {
