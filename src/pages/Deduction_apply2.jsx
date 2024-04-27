@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Checkbox from "./Checkbox";
 import { Link } from "react-router-dom";
 import BackButton from "./Back_button";
+import dummy from "./db/data.json";
 
 export default function Deduction_apply2(props) {
   const selectDepartmentList = [
@@ -124,17 +125,19 @@ export default function Deduction_apply2(props) {
 
   //이전 정보 사용을 클릭하면
   // 이전 정보 상태
+  const previousApply = dummy.previousApply[0];
+
   const [previousInfo, setPreviousInfo] = useState({
-    name: "포스텍",
-    studentId: "20190000",
-    phoneNumber: "01000000000",
-    email: "포스텍@postech.ac.kr",
-    bank: "포항은행",
-    accountNumber: "1111111111222222",
-    selectedDepartment: "산업경영공학과",
-    selectedSex: "남자",
-    selectedApplyType: "일반청구",
-    selectedDegree: "학사",
+    name: previousApply.name,
+    studentId: previousApply.studentId,
+    phoneNumber: previousApply.phoneNumber,
+    email: previousApply.email,
+    bank: previousApply.bank,
+    accountNumber: previousApply.accountNumber,
+    selectedDepartment: previousApply.selectedDepartment,
+    selectedSex: previousApply.selectedSex,
+    selectedApplyType: previousApply.selectedApplyType,
+    selectedDegree: previousApply.selectedDegree,
   });
 
   const [info, setInfo] = useState(false);

@@ -7,7 +7,11 @@ import CommonTable from "./table/Commontable";
 import CommonTableColumn from "./table/Commontablecolumn";
 import CommonTableRow from "./table/Commontablerow";
 
+import dummy from "./db/data.json";
+
 function GetData() {
+  console.log(dummy);
+
   const [data, setData] = useState({});
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/toyseven/voc").then((response) => {
@@ -15,7 +19,7 @@ function GetData() {
     });
   }, []);
 
-  const item = Object.values(data).map((item) => (
+  const item = Object.values(dummy.item).map((item) => (
     <CommonTableRow key={item.id}>
       <CommonTableColumn>{item.id}</CommonTableColumn>
       <CommonTableColumn>{item.title}</CommonTableColumn>

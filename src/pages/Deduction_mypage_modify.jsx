@@ -2,6 +2,7 @@ import styles from "./Deduction_mypage_modify.module.scss";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import BackButton from "./Back_button";
+import dummy from "./db/data.json";
 
 export default function Deduction_mypage_modify(props) {
   const selectDepartmentList = [
@@ -74,17 +75,20 @@ export default function Deduction_mypage_modify(props) {
   };
 
   //이전 정보 사용을 클릭하면
-  // 이전 정보 상태
+  // 이전 정보 상태\
+  console.log(dummy);
+  const person = dummy.personalInfo[0];
+
   const [previousInfo, setPreviousInfo] = useState({
-    name: "포스텍",
-    studentId: "20190000",
-    phoneNumber: "01000000000",
-    email: "포스텍@postech.ac.kr",
-    bank: "포항은행",
-    accountNumber: "1111111111222222",
-    selectedDepartment: "산업경영공학과",
-    selectedSex: "남자",
-    selectedDegree: "학사",
+    name: person.name,
+    studentId: person.studentId,
+    phoneNumber: person.phoneNumber,
+    email: person.email,
+    bank: person.bank,
+    accountNumber: person.accountNumber,
+    selectedDepartment: person.selectedDepartment,
+    selectedSex: person.selectedSex,
+    selectedDegree: person.selectedDegree,
   });
 
   const [info, setInfo] = useState(true);
