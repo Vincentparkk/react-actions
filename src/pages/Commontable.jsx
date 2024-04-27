@@ -7,7 +7,7 @@ export default function Commontable(props) {
   const [historyT, setHistoryT] = useState([]);
 
   useEffect(() => {
-    fetch("https://quill-wakeful-headline.glitch.me/applyItem")
+    fetch(`${process.env.REACT_APP_TODOS}/applyItem`)
       .then((res) => res.json())
       .then((data) => {
         setHistoryT(data); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
