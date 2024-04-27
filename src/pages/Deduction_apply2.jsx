@@ -236,7 +236,7 @@ export default function Deduction_apply2(props) {
     };
     console.log(saveInfo, "이건?");
     console.log(beforeId);
-    fetch("http://localhost:5174/previousApply", {
+    fetch("https://github.com/Vincentparkk/testdata/previousApply", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -256,7 +256,7 @@ export default function Deduction_apply2(props) {
         console.error("Failed to save data:", error);
       });
 
-    fetch("http://localhost:5174/applyItem", {
+    fetch("https://github.com/Vincentparkk/testdata/applyItem", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -278,12 +278,15 @@ export default function Deduction_apply2(props) {
   }
 
   function del() {
-    fetch(`http://localhost:5174/previousApply/${beforeId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://github.com/Vincentparkk/testdata/previousApply/${beforeId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok " + res.status);

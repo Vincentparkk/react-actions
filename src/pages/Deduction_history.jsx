@@ -1,14 +1,9 @@
 import BackButton from "./Back_button";
 import styles from "./Deduction_history.module.scss";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-
+import React from "react";
 import CommonTable from "./Commontable";
 
-import dummy from "./db/data.json";
-
 export default function Deduction_history() {
-  console.log(dummy);
   return (
     <>
       <div className={styles.top}>
