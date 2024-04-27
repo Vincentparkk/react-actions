@@ -2,7 +2,6 @@ import styles from "./Deduction_mypage_modify.module.scss";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import BackButton from "./Back_button";
-import dummy from "./db/data.json";
 
 export default function Deduction_mypage_modify(props) {
   const selectDepartmentList = [
@@ -75,49 +74,114 @@ export default function Deduction_mypage_modify(props) {
   };
 
   //이전 정보 사용을 클릭하면
-  // 이전 정보 상태\
-  console.log(dummy);
-  const person = dummy.personalInfo[0];
-
+  // 이전 정보 상태
+  const [personT, setPersonT] = useState({});
   const [previousInfo, setPreviousInfo] = useState({
-    name: person.name,
-    studentId: person.studentId,
-    phoneNumber: person.phoneNumber,
-    email: person.email,
-    bank: person.bank,
-    accountNumber: person.accountNumber,
-    selectedDepartment: person.selectedDepartment,
-    selectedSex: person.selectedSex,
-    selectedDegree: person.selectedDegree,
+    name: "",
+    studentId: "",
+    phoneNumber: "",
+    email: "",
+    bank: "",
+    accountNumber: "",
+    selectedDepartment: "",
+    selectedSex: "",
+    selectedDegree: "",
   });
 
-  const [info, setInfo] = useState(true);
+  const [beforeId, setBeforeId] = useState("");
 
   useEffect(() => {
-    // 이전 정보와 동일을 체크하면 이전 정보를 입력하기
-    if (info) {
-      setName(previousInfo.name);
-      setStudentId(previousInfo.studentId);
-      setPhoneNumber(previousInfo.phoneNumber);
-      setEmail(previousInfo.email);
-      setBank(previousInfo.bank);
-      setAccountNumber(previousInfo.accountNumber);
-      setSelectedDepartment(previousInfo.selectedDepartment);
-      setSelectedSex(previousInfo.selectedSex);
-      setSelectedDegree(previousInfo.selectedDegree);
-    } else {
-      // 이전 정보와 동일을 체크하지 않으면 입력 필드를 초기화하기
-      setName("");
-      setStudentId("");
-      setPhoneNumber("");
-      setEmail("");
-      setBank("");
-      setAccountNumber("");
-      setSelectedDepartment("");
-      setSelectedSex("");
-      setSelectedDegree("");
+    fetch("http://localhost:5174/personalInfo")
+      .then((res) => res.json())
+      .then((data) => {
+        setPersonT(data[0]); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
+        setBeforeId(data[0].id);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (personT && Object.keys(personT).length > 0) {
+      setPreviousInfo({
+        name: personT.name,
+        studentId: personT.studentId,
+        phoneNumber: personT.phoneNumber,
+        email: personT.email,
+        bank: personT.bank,
+        accountNumber: personT.accountNumber,
+        selectedDepartment: personT.selectedDepartment,
+        selectedSex: personT.selectedSex,
+        selectedDegree: personT.selectedDegree,
+      });
     }
-  }, [info]); // info 상태 변경 시에만 useEffect 실행
+  }, [personT]);
+
+  useEffect(() => {
+    setName(previousInfo.name);
+    setStudentId(previousInfo.studentId);
+    setPhoneNumber(previousInfo.phoneNumber);
+    setEmail(previousInfo.email);
+    setBank(previousInfo.bank);
+    setAccountNumber(previousInfo.accountNumber);
+    setSelectedDepartment(previousInfo.selectedDepartment);
+    setSelectedSex(previousInfo.selectedSex);
+    setSelectedDegree(previousInfo.selectedDegree);
+  }, [previousInfo]); // info 상태 변경 시에만 useEffect 실행
+
+  function save() {
+    const saveInfo = {
+      name: name,
+      studentId: studentId,
+      phoneNumber: phoneNumber,
+      email: email,
+      bank: bank,
+      accountNumber: accountNumber,
+      selectedDepartment: selectedDepartment,
+      selectedSex: selectedSex,
+      selectedDegree: selectedDegree,
+    };
+    console.log(saveInfo, "이건?");
+    console.log(beforeId);
+    fetch("http://localhost:5174/personalInfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(saveInfo),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok " + res.status);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Data saved:", data);
+      })
+      .catch((error) => {
+        console.error("Failed to save data:", error);
+      });
+  }
+
+  function del() {
+    fetch(`http://localhost:5174/personalInfo/${beforeId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok " + res.status);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Data deleted:", data);
+      })
+      .catch((error) => {
+        console.error("Failed to delete data:", error);
+      });
+  }
 
   return (
     <>
@@ -252,7 +316,13 @@ export default function Deduction_mypage_modify(props) {
             to="/deduction_home/deduction_mypage_modify_success"
             disabled={!isFormFilled()}
           >
-            <button disabled={!isFormFilled()}>
+            <button
+              disabled={!isFormFilled()}
+              onClick={() => {
+                save();
+                del();
+              }}
+            >
               <p>저장</p>
             </button>
           </Link>
