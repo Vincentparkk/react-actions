@@ -91,7 +91,7 @@ export default function Deduction_mypage_modify(props) {
   const [beforeId, setBeforeId] = useState("");
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_TODOS}/personalInfo`)
+    fetch("https://testdata1.vercel.app/personalInfo")
       .then((res) => res.json())
       .then((data) => {
         setPersonT(data[0]); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
@@ -141,7 +141,7 @@ export default function Deduction_mypage_modify(props) {
     };
     console.log(saveInfo, "이건?");
     console.log(beforeId);
-    fetch(`${process.env.REACT_APP_TODOS}/personalInfo`, {
+    fetch("https://testdata1.vercel.app/personalInfo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -163,7 +163,7 @@ export default function Deduction_mypage_modify(props) {
   }
 
   function del() {
-    fetch(`${process.env.REACT_APP_TODOS}/personalInfo/${beforeId}`, {
+    fetch(`https://testdata1.vercel.app/personalInfo/${beforeId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

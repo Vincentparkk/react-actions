@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/v1",
     createProxyMiddleware({
-      target: "https://quill-wakeful-headline.glitch.me", // API 서버 주소
+      target: "https://testdata1.vercel.app", // API 서버 주소
       changeOrigin: true,
     })
   );
