@@ -163,7 +163,7 @@ export default function Deduction_mypage_modify(props) {
   }
 
   function del() {
-    fetch(`https://testdata1.vercel.app/personalInfo/${beforeId}`, {
+    fetch(`https://testdata1.vercel.app/personalInfo/?id=${beforeId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

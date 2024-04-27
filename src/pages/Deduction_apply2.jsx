@@ -278,7 +278,7 @@ export default function Deduction_apply2(props) {
   }
 
   function del() {
-    fetch(`https://testdata1.vercel.app/previousApply/${beforeId}`, {
+    fetch(`https://testdata1.vercel.app/previousApply/?id=${beforeId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
