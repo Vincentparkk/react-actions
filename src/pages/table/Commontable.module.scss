@@ -1,0 +1,23 @@
+.commonTable {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.commonTableHeaderColumn {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0;
+  font-size: 16px;
+  padding: 10px 5px;
+  font-weight: bold;
+}
+
+.commonTableRow:hover {
+  background-color: #eceaea;
+  cursor: pointer;
+}
+
+.commonTableColumn {
+  padding: 10px 5px;
+}
