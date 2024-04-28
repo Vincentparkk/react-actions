@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Checkbox from "./Checkbox";
 import { Link } from "react-router-dom";
 import BackButton from "./Back_button";
+import axios from "axios";
 
 export default function Deduction_apply2(props) {
   const selectDepartmentList = [
@@ -140,20 +141,36 @@ export default function Deduction_apply2(props) {
   const [beforeId, setBeforeId] = useState("");
   const [length, setLength] = useState(0);
   useEffect(() => {
-    fetch("https://testdata1.vercel.app/previousApply")
-      .then((res) => res.json())
-      .then((data) => {
-        setApplyT(data[0]); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
-        setBeforeId(data[0].id);
-      });
+    const fetchPreviousApply = async () => {
+      try {
+        const response = await axios.get(
+          "https://juniper-colossal-mail.glitch.me/previousApply"
+        );
+        setApplyT(response.data[0]);
+        setBeforeId(response.data[0].id);
+      } catch (error) {
+        console.error("Failed to fetch previousApply data:", error);
+      }
+    };
+
+    fetchPreviousApply();
   }, []);
+
   useEffect(() => {
-    fetch("https://testdata1.vercel.app/applyItem")
-      .then((res) => res.json())
-      .then((data) => {
-        setLength(data.length + 1);
-      });
+    const fetchApplyItem = async () => {
+      try {
+        const response = await axios.get(
+          "https://juniper-colossal-mail.glitch.me/applyItem"
+        );
+        setLength(response.data.length + 1);
+      } catch (error) {
+        console.error("Failed to fetch applyItem data:", error);
+      }
+    };
+
+    fetchApplyItem();
   }, []);
+
   useEffect(() => {
     if (applyT && Object.keys(applyT).length > 0) {
       setPreviousInfo({
@@ -214,83 +231,47 @@ export default function Deduction_apply2(props) {
     }
   }, [info]); // info 상태 변경 시에만 useEffect 실행
 
-  function save() {
-    const saveInfo = {
-      name: name,
-      studentId: studentId,
-      phoneNumber: phoneNumber,
-      email: email,
-      bank: bank,
-      accountNumber: accountNumber,
-      selectedDepartment: selectedDepartment,
-      selectedSex: selectedSex,
-      selectedApplyType: selectedApplyType,
-      selectedDegree: selectedDegree,
-    };
-    const saveApplyInfo = {
-      id: length,
-      title: hospital,
-      createAt: "지급완료",
-      username: treatmentDate,
-      price: price,
-    };
-    console.log(saveInfo, "이건?");
-    console.log(beforeId);
-    fetch("https://testdata1.vercel.app/previousApply", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(saveInfo),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok " + res.status);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Data saved:", data);
-      })
-      .catch((error) => {
-        console.error("Failed to save data:", error);
-      });
+  const save = async () => {
+    try {
+      await axios.delete(
+        `https://juniper-colossal-mail.glitch.me/previousApply/${beforeId}`
+      );
 
-    fetch("https://testdata1.vercel.app/applyItem", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(saveApplyInfo),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok " + res.status);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Data saved:", data);
-      })
-      .catch((error) => {
-        console.error("Failed to save data:", error);
-      });
-  }
+      const saveInfo = {
+        name: name,
+        studentId: studentId,
+        phoneNumber: phoneNumber,
+        email: email,
+        bank: bank,
+        accountNumber: accountNumber,
+        selectedDepartment: selectedDepartment,
+        selectedSex: selectedSex,
+        selectedApplyType: selectedApplyType,
+        selectedDegree: selectedDegree,
+      }; // Construct saveInfo object with your data
+      const saveApplyInfo = {
+        id: length,
+        title: hospital,
+        createAt: "지급완료",
+        username: treatmentDate,
+        price: price,
+      }; // Construct saveApplyInfo object with your data
 
-  function del() {
-    fetch(`https://testdata1.vercel.app/previousApply/?id=${beforeId}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to delete data " + res.status);
-        }
-        console.log("Data deleted successfully");
-      })
-      .catch((error) => {
-        console.error("Failed to delete data:", error);
-      });
-  }
+      const saveInfoResponse = await axios.post(
+        "https://juniper-colossal-mail.glitch.me/previousApply",
+        saveInfo
+      );
+      console.log("Data saved:", saveInfoResponse.data);
+
+      const saveApplyInfoResponse = await axios.post(
+        "https://juniper-colossal-mail.glitch.me/applyItem",
+        saveApplyInfo
+      );
+      console.log("Data saved:", saveApplyInfoResponse.data);
+    } catch (error) {
+      console.error("Failed to save data:", error);
+    }
+  };
 
   return (
     <>
@@ -592,13 +573,7 @@ export default function Deduction_apply2(props) {
             to="/deduction_home/deduction_apply3"
             disabled={!isFormFilled()}
           >
-            <button
-              disabled={!isFormFilled()}
-              onClick={() => {
-                save();
-                del();
-              }}
-            >
+            <button disabled={!isFormFilled()} onClick={save}>
               <p>신청</p>
             </button>
           </Link>

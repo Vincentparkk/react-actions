@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Login() {
-  // useEffect(() => {
-  //   fetch("https://testdata1.vercel.app/applyItem")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, []);
+  const [test1, setTest1] = useState([]);
+
+  useEffect(() => {
+    fetch("https://juniper-colossal-mail.glitch.me/personalInfo?id=8d97")
+      .then((res) => res.json())
+      .then((data) => {
+        setTest1(data); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
+      });
+  }, []);
+
+  console.log(test1);
+
   return (
     <>
       <h1>Login</h1>

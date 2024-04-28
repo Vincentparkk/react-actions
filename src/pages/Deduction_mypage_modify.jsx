@@ -2,6 +2,7 @@ import styles from "./Deduction_mypage_modify.module.scss";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import BackButton from "./Back_button";
+import axios from "axios";
 
 export default function Deduction_mypage_modify(props) {
   const selectDepartmentList = [
@@ -89,14 +90,20 @@ export default function Deduction_mypage_modify(props) {
   });
 
   const [beforeId, setBeforeId] = useState("");
-
   useEffect(() => {
-    fetch("https://testdata1.vercel.app/personalInfo")
-      .then((res) => res.json())
-      .then((data) => {
-        setPersonT(data[0]); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
-        setBeforeId(data[0].id);
-      });
+    const fetchPreviousApply = async () => {
+      try {
+        const response = await axios.get(
+          "https://juniper-colossal-mail.glitch.me/personalInfo"
+        );
+        setPersonT(response.data[0]);
+        setBeforeId(response.data[0].id);
+      } catch (error) {
+        console.error("Failed to fetch previousApply data:", error);
+      }
+    };
+
+    fetchPreviousApply();
   }, []);
 
   useEffect(() => {
@@ -127,61 +134,33 @@ export default function Deduction_mypage_modify(props) {
     setSelectedDegree(previousInfo.selectedDegree);
   }, [previousInfo]); // info 상태 변경 시에만 useEffect 실행
 
-  function save() {
-    const saveInfo = {
-      name: name,
-      studentId: studentId,
-      phoneNumber: phoneNumber,
-      email: email,
-      bank: bank,
-      accountNumber: accountNumber,
-      selectedDepartment: selectedDepartment,
-      selectedSex: selectedSex,
-      selectedDegree: selectedDegree,
-    };
-    console.log(saveInfo, "이건?");
-    console.log(beforeId);
-    fetch("https://testdata1.vercel.app/personalInfo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(saveInfo),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok " + res.status);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Data saved:", data);
-      })
-      .catch((error) => {
-        console.error("Failed to save data:", error);
-      });
-  }
+  const save = async () => {
+    try {
+      await axios.delete(
+        `https://juniper-colossal-mail.glitch.me/personalInfo/${beforeId}`
+      );
 
-  function del() {
-    fetch(`https://testdata1.vercel.app/personalInfo/?id=${beforeId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok " + res.status);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Data deleted:", data);
-      })
-      .catch((error) => {
-        console.error("Failed to delete data:", error);
-      });
-  }
+      const saveInfo = {
+        name: name,
+        studentId: studentId,
+        phoneNumber: phoneNumber,
+        email: email,
+        bank: bank,
+        accountNumber: accountNumber,
+        selectedDepartment: selectedDepartment,
+        selectedSex: selectedSex,
+        selectedDegree: selectedDegree,
+      }; // Construct saveInfo object with your data
+
+      const saveInfoResponse = await axios.post(
+        "https://juniper-colossal-mail.glitch.me/personalInfo",
+        saveInfo
+      );
+      console.log("Data saved:", saveInfoResponse.data);
+    } catch (error) {
+      console.error("Failed to save data:", error);
+    }
+  };
 
   return (
     <>
@@ -316,13 +295,7 @@ export default function Deduction_mypage_modify(props) {
             to="/deduction_home/deduction_mypage_modify_success"
             disabled={!isFormFilled()}
           >
-            <button
-              disabled={!isFormFilled()}
-              onClick={() => {
-                save();
-                del();
-              }}
-            >
+            <button disabled={!isFormFilled()} onClick={save}>
               <p>저장</p>
             </button>
           </Link>
