@@ -280,18 +280,12 @@ export default function Deduction_apply2(props) {
   function del() {
     fetch(`https://testdata1.vercel.app/previousApply/?id=${beforeId}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Network response was not ok " + res.status);
+          throw new Error("Failed to delete data " + res.status);
         }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Data deleted:", data);
+        console.log("Data deleted successfully");
       })
       .catch((error) => {
         console.error("Failed to delete data:", error);
