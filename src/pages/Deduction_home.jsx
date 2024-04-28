@@ -5,7 +5,7 @@ import styled from "styled-components";
 import styles from "./Deduction_home.module.scss";
 import BackButton from "./Back_button";
 import { useState, useEffect } from "react";
-import dummy from "./db/data.json";
+import axios from "axios";
 
 export default function Deduction_home() {
   const ProgressBar = styled.div`
@@ -49,6 +49,97 @@ export default function Deduction_home() {
   }, 0);
 
   console.log(totalPrice);
+
+  //데이터 초기화 버튼 기능
+  const handleClick = async () => {
+    try {
+      // personalInfo 엔드포인트에서 모든 데이터 가져오기
+      const response1 = await axios.get(
+        "https://juniper-colossal-mail.glitch.me/personalInfo"
+      );
+      const personalInfoData = response1.data;
+
+      // personalInfo 엔드포인트에서 가져온 데이터 중에서 id가 '8d97'인 데이터 삭제
+      for (const data of personalInfoData) {
+        await axios.delete(
+          `https://juniper-colossal-mail.glitch.me/personalInfo/${data.id}`
+        );
+      }
+
+      // personalInfo 엔드포인트에 새로운 데이터 추가
+      await axios.post("https://juniper-colossal-mail.glitch.me/personalInfo", {
+        id: "8d97",
+        name: "박산경",
+        studentId: "20190000",
+        phoneNumber: "01012345678",
+        email: "ime.park@postech.ac.kr",
+        bank: "포항은행",
+        accountNumber: "05427912341234",
+        selectedDepartment: "산업경영공학과",
+        selectedSex: "남자",
+        selectedDegree: "학사",
+      });
+
+      // previousApply 엔드포인트에서 모든 데이터 가져오기
+      const response2 = await axios.get(
+        "https://juniper-colossal-mail.glitch.me/previousApply"
+      );
+      const previousApplyData = response2.data;
+
+      // previousApply 엔드포인트에서 가져온 데이터 삭제
+      for (const data of previousApplyData) {
+        await axios.delete(
+          `https://juniper-colossal-mail.glitch.me/previousApply/${data.id}`
+        );
+      }
+
+      // previousApply 엔드포인트에 새로운 데이터 추가
+      await axios.post(
+        "https://juniper-colossal-mail.glitch.me/previousApply",
+        {
+          id: "16b6",
+          name: "박산경",
+          studentId: "20190000",
+          phoneNumber: "01012341234",
+          email: "ime.park@postech.ac.kr",
+          bank: "포항은행",
+          accountNumber: "05427912341234",
+          selectedDepartment: "산업경영공학과",
+          selectedSex: "남자",
+          selectedApplyType: "일반청구",
+          selectedDegree: "학사",
+        }
+      );
+
+      // applyItem 엔드포인트에서 모든 데이터 가져오기
+      const response3 = await axios.get(
+        "https://juniper-colossal-mail.glitch.me/applyItem"
+      );
+      const applyItemData = response3.data;
+
+      // applyItem 엔드포인트에서 가져온 데이터 삭제
+      for (const data of applyItemData) {
+        await axios.delete(
+          `https://juniper-colossal-mail.glitch.me/applyItem/${data.id}`
+        );
+      }
+
+      // applyItem 엔드포인트에 새로운 데이터 추가
+      await axios.post("https://juniper-colossal-mail.glitch.me/applyItem", {
+        id: 1,
+        title: "포항병원",
+        createAt: "지급완료",
+        username: "20.10.10",
+        price: "100000",
+      });
+
+      console.log("Data updated successfully");
+      window.confirm("데이터가 모두 초기화되었습니다.");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <>
@@ -105,6 +196,9 @@ export default function Deduction_home() {
         <a href="https://smcp.postech.ac.kr/">
           <img src={postechImage} />
         </a>
+      </div>
+      <div>
+        <button onClick={handleClick}>데이터 수정</button>
       </div>
     </>
   );
