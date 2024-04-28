@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 function Login() {
-  useEffect(() => {
-    fetch("https://testdata1.vercel.app/applyItem")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://testdata1.vercel.app/applyItem")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
   return (
     <>
       <h1>Login</h1>
