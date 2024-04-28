@@ -135,7 +135,6 @@ export default function Deduction_home() {
 
       console.log("Data updated successfully");
       window.confirm("데이터가 모두 초기화되었습니다.");
-      window.location.reload();
     } catch (error) {
       console.error("Error:", error);
     }
