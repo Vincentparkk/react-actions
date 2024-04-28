@@ -5,6 +5,7 @@ import styled from "styled-components";
 import styles from "./Deduction_home.module.scss";
 import BackButton from "./Back_button";
 import { useState, useEffect } from "react";
+import dummy from "./db/data.json";
 
 export default function Deduction_home() {
   const ProgressBar = styled.div`
@@ -31,15 +32,17 @@ export default function Deduction_home() {
 
   const [priceT, setPriceT] = useState([]);
 
-  useEffect(() => {
-    fetch("https://testdata1.vercel.app/applyItem")
-      .then((res) => res.json())
-      .then((data) => {
-        setPriceT(data); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://testdata1.vercel.app/applyItem")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setPriceT(data); // 가정: 서버 응답의 첫 번째 항목이 필요한 데이터
+  //     });
+  // }, []);
 
-  console.log(priceT);
+  setPriceT(dummy.applyItem);
+
+  // console.log(priceT);
 
   const totalPrice = priceT.reduce((accumulator, currentItem) => {
     // currentItem가 존재하고 price 속성이 있으면 숫자로 변환하여 더하고, 그렇지 않으면 누적값을 그대로 반환
