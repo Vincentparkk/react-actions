@@ -2,8 +2,25 @@ import BackButton from "./Back_button";
 import styles from "./Deduction_mypage.module.scss";
 import { Link } from "react-router-dom";
 import imeImage from "./imeimage.png";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function Deduction_mypage() {
+  const [name, setName] = useState("박산경");
+  useEffect(() => {
+    const fetchPreviousApply = async () => {
+      try {
+        const response = await axios.get(
+          "https://juniper-colossal-mail.glitch.me/personalInfo"
+        );
+        setName(response.data[0].name);
+      } catch (error) {
+        console.error("Failed to fetch previousApply data:", error);
+      }
+    };
+
+    fetchPreviousApply();
+  }, []);
   return (
     <>
       <div className={styles.page}>
@@ -15,7 +32,7 @@ export default function Deduction_mypage() {
           <div className={styles.profileImage}>
             <img className={styles.image} src={imeImage} />
           </div>
-          <p className={styles.user}>박산경</p>
+          <p className={styles.user}>{name}</p>
           <p className={styles.email}>ime.park@postech.ac.kr</p>
         </div>
 

@@ -146,7 +146,7 @@ export default function Deduction_home() {
     <>
       <div className={styles.page}>
         <div className={styles.top}>
-          <BackButton />
+          <BackButton destination="/card" />
           <h1 className={styles.title}>의료공제</h1>
         </div>
 

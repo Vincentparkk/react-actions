@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import deductionImage from "./deductionimage.jpg";
 import healthImage from "./healthimage.jpg";
 import styles from "./Card.module.scss";
+import axios from "axios";
 
 function Card() {
-  const name = "박산경";
+  const [name, setName] = useState("박산경");
+  useEffect(() => {
+    const fetchPreviousApply = async () => {
+      try {
+        const response = await axios.get(
+          "https://juniper-colossal-mail.glitch.me/personalInfo"
+        );
+        setName(response.data[0].name);
+      } catch (error) {
+        console.error("Failed to fetch previousApply data:", error);
+      }
+    };
+
+    fetchPreviousApply();
+  }, []);
+
   return (
     <>
       <div className={styles.page}>
         <div className={styles.header}>
           <div className={styles.header1}>
-            <p>안녕하세요,</p> <div className={styles.name}>{name}</div>
+            <p>안녕하세요, </p> <div className={styles.name}> {name}</div>
             <p>님!</p>
           </div>
           <div>원하는 카드를 선택해주세요.</div>

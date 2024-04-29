@@ -12,7 +12,7 @@ export default function Deduction_mypage_modify_success() {
         </div>
 
         <div className={styles.center}>
-          <h1 className={styles.msg}>수정이 완료되었습니다.</h1>
+          <h1 className={styles.msg}>수정 완료</h1>
         </div>
         <article>
           <footer>
