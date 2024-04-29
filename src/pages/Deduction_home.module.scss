@@ -1,17 +1,31 @@
+.page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+  padding: 0;
+
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  background-color: #f7f7f7;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .top {
   display: flex;
   flex-direction: row;
-}
-
-.title {
+  font-weight: bold;
+  height: 70px;
   font-size: 40px;
 }
 
 .DeductionIcon {
-  margin: auto;
-  border-bottom: 1px solid;
-  border-color: black;
-  background-color: #e7e4e0;
+  margin: 10px;
 }
 
 .Bar {
@@ -19,12 +33,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 10%;
-  padding-right: 10%;
-
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 10px;
+  margin-left: 12px;
+  margin-right: 12px;
   background-color: #e7e4e0;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
+  border-radius: 15px;
   border-color: black;
 }
 
@@ -38,13 +53,32 @@
   width: 50%;
   display: flex;
   align-items: flex-start;
+  font-size: 15px;
 }
 
 .gaugeEnd {
   width: 50%;
   text-align: right;
+  font-size: 15px;
 }
 
-button {
-  margin: 20px;
+.butt {
+  border-radius: 5px;
+  margin: 10px;
+  background-color: #e7e4e0;
+}
+
+.buttP {
+  font-size: 15px;
+  margin: 0px;
+}
+
+.hhh {
+  color: black;
+}
+
+.image {
+  border-radius: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

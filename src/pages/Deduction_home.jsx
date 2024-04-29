@@ -10,7 +10,7 @@ import axios from "axios";
 export default function Deduction_home() {
   const ProgressBar = styled.div`
     width: 100%;
-    height: 50px;
+    height: 70px;
     background-color: #dedede;
     border: 1px solid;
     border-color: black;
@@ -24,7 +24,7 @@ export default function Deduction_home() {
 
   const Progress = styled.div`
     width: ${(props) => props.width}%;
-    height: 50px;
+    height: 70px;
     padding: 0;
     text-align: center;
     background-color: #c80150;
@@ -142,62 +142,68 @@ export default function Deduction_home() {
 
   return (
     <>
-      <div className={styles.top}>
-        <BackButton></BackButton>
-        <h1 className={styles.title}>의료공제탭</h1>
-      </div>
-
-      <div className={styles.Bar}>
-        <label style={{ paddingBottom: 30, fontSize: 30 }}>2024년-1학기</label>
-        <label>전체 수혜금액 - {totalPrice / 10000}만원</label>
-        <ProgressBar>
-          <Progress width={(totalPrice / 500000) * 100} />
-        </ProgressBar>
-        <div className={styles.gauge}>
-          <p className={styles.gaugeStart}>0원</p>
-          <p className={styles.gaugeEnd}>50만원</p>
+      <div className={styles.page}>
+        <div className={styles.top}>
+          <BackButton></BackButton>
+          의료공제
         </div>
 
-        <label style={{ paddingTop: 20 }}>
-          외래진료 수혜금액 - {totalPrice / 10000}만원
-        </label>
-        <ProgressBar>
-          <Progress width={(totalPrice / 200000) * 100} />
-          <p>asdasd</p>
-        </ProgressBar>
-        <div className={styles.gauge}>
-          <p className={styles.gaugeStart}>0원</p>
-          <p className={styles.gaugeEnd}>20만원</p>
+        <div className={styles.Bar}>
+          <label style={{ paddingTop: 10, paddingBottom: 10, fontSize: 25 }}>
+            2024년-1학기
+          </label>
+          <label>전체 수혜금액 - {totalPrice / 10000}만원</label>
+          <ProgressBar>
+            <Progress width={(totalPrice / 500000) * 100} />
+          </ProgressBar>
+          <div className={styles.gauge}>
+            <p className={styles.gaugeStart}>0원</p>
+            <p className={styles.gaugeEnd}>50만원</p>
+          </div>
+
+          <label style={{ paddingTop: 10 }}>
+            외래진료 수혜금액 - {totalPrice / 10000}만원
+          </label>
+          <ProgressBar>
+            <Progress width={(totalPrice / 200000) * 100} />
+            <p>asdasd</p>
+          </ProgressBar>
+          <div className={styles.gauge}>
+            <p className={styles.gaugeStart}>0원</p>
+            <p className={styles.gaugeEnd}>20만원</p>
+          </div>
         </div>
-      </div>
-      <div className={styles.DeductionIcon}>
-        <Link to="deduction_apply1">
-          <button>
-            <FaMeteor size="20" color="black"></FaMeteor>
-            <p>신청</p>
+        <div className={styles.DeductionIcon}>
+          <Link to="deduction_apply1">
+            <button className={styles.butt}>
+              <FaMeteor size="30" color="black"></FaMeteor>
+              <p className={styles.buttP}>신청</p>
+            </button>
+          </Link>
+          <Link to="deduction_history">
+            <button className={styles.butt}>
+              <FaMeteor size="30" color="black"></FaMeteor>
+              <p className={styles.buttP}>신청현황/내역</p>
+            </button>
+          </Link>
+          <Link to="deduction_mypage">
+            <button className={styles.butt}>
+              <FaMeteor size="30" color="black"></FaMeteor>
+              <p className={styles.buttP}>마이페이지</p>
+            </button>
+          </Link>
+        </div>
+        <div>
+          <h3 className={styles.hhh}>의료공제회 홈페이지</h3>
+          <a href="https://smcp.postech.ac.kr/">
+            <img className={styles.image} src={postechImage} />
+          </a>
+        </div>
+        <div>
+          <button className={styles.butt} onClick={handleClick}>
+            데이터 초기화
           </button>
-        </Link>
-        <Link to="deduction_history">
-          <button>
-            <FaMeteor size="20" color="black"></FaMeteor>
-            <p>신청현황/내역</p>
-          </button>
-        </Link>
-        <Link to="deduction_mypage">
-          <button>
-            <FaMeteor size="20" color="black"></FaMeteor>
-            <p>마이페이지</p>
-          </button>
-        </Link>
-      </div>
-      <div>
-        <h3>의료공제회 홈페이지</h3>
-        <a href="https://smcp.postech.ac.kr/">
-          <img src={postechImage} />
-        </a>
-      </div>
-      <div>
-        <button onClick={handleClick}>데이터 수정</button>
+        </div>
       </div>
     </>
   );
