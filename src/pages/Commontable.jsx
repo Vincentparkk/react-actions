@@ -34,7 +34,9 @@ export default function Commontable(props) {
           <tr className={styles.commonTableRow}>
             <td className={styles.commonTableColumn}>{item.id}</td>
             <td className={styles.commonTableColumn}>{item.title}</td>
-            <td className={styles.commonTableColumn}>{item.createAt}</td>
+            <td className={styles.commonTableColumnCondition}>
+              {item.createAt}
+            </td>
             <td className={styles.commonTableColumn}>{item.username}</td>
           </tr>
         ))}

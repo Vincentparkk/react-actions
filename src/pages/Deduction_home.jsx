@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { FaMeteor } from "react-icons/fa";
+import { VscGitStashApply } from "react-icons/vsc";
+import { CiViewTable } from "react-icons/ci";
+import { IoPersonOutline } from "react-icons/io5";
 import postechImage from "./postechimage.png";
 import styled from "styled-components";
 import styles from "./Deduction_home.module.scss";
@@ -144,8 +146,8 @@ export default function Deduction_home() {
     <>
       <div className={styles.page}>
         <div className={styles.top}>
-          <BackButton></BackButton>
-          의료공제
+          <BackButton />
+          <h1 className={styles.title}>의료공제</h1>
         </div>
 
         <div className={styles.Bar}>
@@ -176,19 +178,19 @@ export default function Deduction_home() {
         <div className={styles.DeductionIcon}>
           <Link to="deduction_apply1">
             <button className={styles.butt}>
-              <FaMeteor size="30" color="black"></FaMeteor>
+              <VscGitStashApply size="30" color="black"></VscGitStashApply>
               <p className={styles.buttP}>신청</p>
             </button>
           </Link>
           <Link to="deduction_history">
             <button className={styles.butt}>
-              <FaMeteor size="30" color="black"></FaMeteor>
+              <CiViewTable size="30" color="black"></CiViewTable>
               <p className={styles.buttP}>신청현황/내역</p>
             </button>
           </Link>
           <Link to="deduction_mypage">
             <button className={styles.butt}>
-              <FaMeteor size="30" color="black"></FaMeteor>
+              <IoPersonOutline size="30" color="black"></IoPersonOutline>
               <p className={styles.buttP}>마이페이지</p>
             </button>
           </Link>

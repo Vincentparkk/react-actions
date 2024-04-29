@@ -1,5 +1,5 @@
 .commonTable {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   border-spacing: 0;
@@ -20,4 +20,9 @@
 
 .commonTableColumn {
   padding: 10px 5px;
+}
+
+.commonTableColumnCondition {
+  padding: 10px 5px;
+  font-weight: bold;
 }

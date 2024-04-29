@@ -164,143 +164,149 @@ export default function Deduction_mypage_modify(props) {
 
   return (
     <>
-      <div className={styles.top}>
-        <BackButton />
-        <h1 className={styles.title}>개인정보수정</h1>
-      </div>
+      <div className={styles.page}>
+        <div className={styles.top}>
+          <BackButton />
+          <h1 className={styles.title}>개인정보수정</h1>
+        </div>
 
-      <div className={styles.center}>
-        <form className={styles.container}>
-          <div className={styles.subTitle}>
-            <label>이름</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={name}
-              onChange={handleNameChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>학과</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleSelectDepartment}
-              value={selectedDepartment}
+        <div className={styles.center}>
+          <form className={styles.container}>
+            <div className={styles.subTitle}>
+              <label>이름</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={name}
+                onChange={handleNameChange}
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label>학과</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleSelectDepartment}
+                value={selectedDepartment}
+              >
+                {selectDepartmentList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label>과정</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleSelectDegree}
+                value={selectedDegree}
+              >
+                {selectDegreeList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label>학번</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={studentId}
+                onChange={handleStudentIdChange}
+                placeholder="8자리 숫자만 입력"
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label>성별</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleSex}
+                value={selectedSex}
+              >
+                {selectSexList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label>휴대전화</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                placeholder="- 를 제외하고 입력"
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label>E-mail</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label>은행</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={bank}
+                onChange={handleBankChange}
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label>계좌번호</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={accountNumber}
+                onChange={handleAccountNumberChange}
+              />
+            </div>
+          </form>
+        </div>
+        <article>
+          <footer>
+            <Link
+              to="/deduction_home/deduction_mypage_modify_success"
+              disabled={!isFormFilled()}
             >
-              {selectDepartmentList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>과정</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleSelectDegree}
-              value={selectedDegree}
-            >
-              {selectDegreeList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>학번</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={studentId}
-              onChange={handleStudentIdChange}
-              placeholder="8자리 숫자만 입력"
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>성별</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleSex}
-              value={selectedSex}
-            >
-              {selectSexList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>휴대전화</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
-              placeholder="- 를 제외하고 입력"
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>E-mail</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>은행</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={bank}
-              onChange={handleBankChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>계좌번호</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={accountNumber}
-              onChange={handleAccountNumberChange}
-            />
-          </div>
-        </form>
+              <button
+                className={styles.butt}
+                disabled={!isFormFilled()}
+                onClick={save}
+              >
+                <p className={styles.buttP}>저장</p>
+              </button>
+            </Link>
+          </footer>
+        </article>
       </div>
-      <article>
-        <footer>
-          <Link
-            to="/deduction_home/deduction_mypage_modify_success"
-            disabled={!isFormFilled()}
-          >
-            <button disabled={!isFormFilled()} onClick={save}>
-              <p>저장</p>
-            </button>
-          </Link>
-        </footer>
-      </article>
     </>
   );
 }

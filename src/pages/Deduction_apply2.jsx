@@ -275,310 +275,321 @@ export default function Deduction_apply2(props) {
 
   return (
     <>
-      <div className={styles.top}>
-        <BackButton />
-        <h1 className={styles.title}>신청정보기입</h1>
-      </div>
+      <div className={styles.page}>
+        <div className={styles.top}>
+          <BackButton />
+          <h1 className={styles.title}>의료공제신청</h1>
+        </div>
 
-      <div className={styles.center}>
-        <Checkbox checked={info} onChange={setInfo}>
-          이전 신청 정보와 동일
-        </Checkbox>
-        <form onSubmit={handleSubmit} className={styles.container}>
-          <div className={styles.subTitle}>
-            <label>이름</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={name}
-              onChange={handleNameChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>학과</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleSelectDepartment}
-              value={selectedDepartment}
-            >
-              {selectDepartmentList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>과정</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleSelectDegree}
-              value={selectedDegree}
-            >
-              {selectDegreeList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>학번</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={studentId}
-              onChange={handleStudentIdChange}
-              placeholder="8자리 숫자만 입력"
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>성별</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleSex}
-              value={selectedSex}
-            >
-              {selectSexList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>휴대전화</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
-              placeholder="- 를 제외하고 입력"
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>E-mail</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>청구유형</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleApplyType}
-              value={selectedApplyType}
-            >
-              {selectApplyTypeList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>은행</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={bank}
-              onChange={handleBankChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>계좌번호</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={accountNumber}
-              onChange={handleAccountNumberChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>제출서류</label>
-          </div>
-          <div className={styles.subInput}>
-            <div className={styles.subCheckBox}>
-              <Checkbox checked={paper1} onChange={setPaper1}>
-                <span style={{ fontSize: "12px" }}>진료비계산서</span>
-              </Checkbox>
-              <Checkbox checked={paper2} onChange={setPaper2}>
-                <span style={{ fontSize: "12px" }}>결제영수증(진료비)</span>
-              </Checkbox>
-              <Checkbox checked={paper3} onChange={setPaper3}>
-                <span style={{ fontSize: "12px" }}>약제비계산서</span>
-              </Checkbox>
+        <div className={styles.center}>
+          <Checkbox checked={info} onChange={setInfo}>
+            이전 신청 정보와 동일
+          </Checkbox>
+          <form onSubmit={handleSubmit} className={styles.container}>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>이름</label>
             </div>
-            <div className={styles.subCheckBox}>
-              <Checkbox checked={paper4} onChange={setPaper4}>
-                <span style={{ fontSize: "12px" }}>결제영수증(약제비)</span>
-              </Checkbox>
-              <Checkbox checked={paper5} onChange={setPaper5}>
-                <span style={{ fontSize: "12px" }}>진료확인서(특별청구시)</span>
-              </Checkbox>
-            </div>
-          </div>
-          <div className={styles.subTitle}>
-            <label>첨부파일1</label>
-          </div>
-          <div className={styles.subInput}>
-            <input type="file" accept="image/*" />
-          </div>
-          <div className={styles.subTitle}>
-            <label>첨부파일2</label>
-          </div>
-          <div className={styles.subInput}>
-            <input type="file" accept="image/*" />
-          </div>
-          <div className={styles.subTitle}>
-            <label>첨부파일3</label>
-          </div>
-          <div className={styles.subInput}>
-            <input type="file" accept="image/*" />
-          </div>
-          <div className={styles.subTitle}>
-            <label>첨부파일4</label>
-          </div>
-          <div className={styles.subInput}>
-            <input type="file" accept="image/*" />
-          </div>
-          <div className={styles.subTitle}>
-            <label>첨부파일5</label>
-          </div>
-          <div className={styles.subInput}>
-            <input type="file" accept="image/*" />
-          </div>
-          <div className={styles.subTitle}>
-            <label>신청금액(원)</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={price}
-              onChange={handlePriceChange}
-              placeholder="급여본인부담금 합계의 80%"
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>진료구분</label>
-          </div>
-          <div className={styles.subInput}>
-            <select
-              className={styles.inputStyle}
-              onChange={handleDiagnosisType}
-              value={selectedDiagnosisType}
-            >
-              {selectDiagnosisTypeList.map((item) => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={styles.subTitle}>
-            <label>진료날짜</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={treatmentDate}
-              onChange={handleTreatmentDateChange}
-              placeholder="YY.MM.DD"
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>진료병원</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={hospital}
-              onChange={handleHospitalChange}
-            />
-          </div>
-          <div className={styles.subTitle}>
-            <label>진단명</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={disease}
-              onChange={handleDiseaseChange}
-            />
-          </div>
-        </form>
-        <form onSubmit={handleSubmitReason} className={styles.containerReason}>
-          <div className={styles.subTitle}>
-            <label>치료경위</label>
-          </div>
-          <div className={styles.subInput}>
             <div className={styles.subInput}>
-              <textarea
-                className={styles.reasonText}
-                value={reason}
-                onChange={handleReasonChange}
-                placeholder="*질병치료: 발생(추정)원인과 증상에 대하여 기재*사고/상해치료: 6하원칙에 입각한 상세경위 기재*제출하신 신청서는 규약에 의거 3년간 파일철로 보관되며, 외부로 유출되지 않음을 말씀드립니다."
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={name}
+                onChange={handleNameChange}
               />
             </div>
-          </div>
-        </form>
-        <form
-          onSubmit={handleSubmitSignature}
-          className={styles.containerSignature}
-        >
-          <div className={styles.subTitle}>
-            <label>서명</label>
-          </div>
-          <div className={styles.subInput}>
-            <input
-              className={styles.inputStyle}
-              type="text"
-              value={signature}
-              onChange={handleSignatureChange}
-              placeholder="한글로 이름입력"
-            />
-          </div>
-        </form>
-      </div>
-      <article>
-        <footer>
-          <Link
-            to="/deduction_home/deduction_apply3"
-            disabled={!isFormFilled()}
+            <div className={styles.subTitle}>
+              <label className={styles.label}>학과</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleSelectDepartment}
+                value={selectedDepartment}
+              >
+                {selectDepartmentList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>과정</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleSelectDegree}
+                value={selectedDegree}
+              >
+                {selectDegreeList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>학번</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={studentId}
+                onChange={handleStudentIdChange}
+                placeholder="8자리 숫자만 입력"
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>성별</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleSex}
+                value={selectedSex}
+              >
+                {selectSexList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>휴대전화</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                placeholder="- 를 제외하고 입력"
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label>E-mail</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>청구유형</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleApplyType}
+                value={selectedApplyType}
+              >
+                {selectApplyTypeList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>은행</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={bank}
+                onChange={handleBankChange}
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>계좌번호</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={accountNumber}
+                onChange={handleAccountNumberChange}
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>제출서류</label>
+            </div>
+            <div className={styles.subInput}>
+              <div className={styles.subCheckBox}>
+                <Checkbox checked={paper1} onChange={setPaper1}>
+                  <span style={{ fontSize: "12px" }}>진료비계산서</span>
+                </Checkbox>
+                <Checkbox checked={paper2} onChange={setPaper2}>
+                  <span style={{ fontSize: "12px" }}>결제영수증(진료비)</span>
+                </Checkbox>
+                <Checkbox checked={paper3} onChange={setPaper3}>
+                  <span style={{ fontSize: "12px" }}>약제비계산서</span>
+                </Checkbox>
+              </div>
+              <div className={styles.subCheckBox}>
+                <Checkbox checked={paper4} onChange={setPaper4}>
+                  <span style={{ fontSize: "12px" }}>결제영수증(약제비)</span>
+                </Checkbox>
+                <Checkbox checked={paper5} onChange={setPaper5}>
+                  <span style={{ fontSize: "12px" }}>
+                    진료확인서(특별청구시)
+                  </span>
+                </Checkbox>
+              </div>
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>첨부파일1</label>
+            </div>
+            <div className={styles.subInput}>
+              <input type="file" accept="image/*" />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>첨부파일2</label>
+            </div>
+            <div className={styles.subInput}>
+              <input type="file" accept="image/*" />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>첨부파일3</label>
+            </div>
+            <div className={styles.subInput}>
+              <input type="file" accept="image/*" />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>첨부파일4</label>
+            </div>
+            <div className={styles.subInput}>
+              <input type="file" accept="image/*" />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>첨부파일5</label>
+            </div>
+            <div className={styles.subInput}>
+              <input type="file" accept="image/*" />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>신청금액(원)</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={price}
+                onChange={handlePriceChange}
+                placeholder="급여본인부담금 합계의 80%"
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>진료구분</label>
+            </div>
+            <div className={styles.subInput}>
+              <select
+                className={styles.inputStyle}
+                onChange={handleDiagnosisType}
+                value={selectedDiagnosisType}
+              >
+                {selectDiagnosisTypeList.map((item) => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>진료날짜</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={treatmentDate}
+                onChange={handleTreatmentDateChange}
+                placeholder="YY.MM.DD"
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>진료병원</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={hospital}
+                onChange={handleHospitalChange}
+              />
+            </div>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>진단명</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={disease}
+                onChange={handleDiseaseChange}
+              />
+            </div>
+          </form>
+          <form
+            onSubmit={handleSubmitReason}
+            className={styles.containerReason}
           >
-            <button disabled={!isFormFilled()} onClick={save}>
-              <p>신청</p>
-            </button>
-          </Link>
-        </footer>
-      </article>
+            <div className={styles.subTitle}>
+              <label className={styles.label}>치료경위</label>
+            </div>
+            <div className={styles.subInput}>
+              <div className={styles.subInput}>
+                <textarea
+                  className={styles.reasonText}
+                  value={reason}
+                  onChange={handleReasonChange}
+                  placeholder="*질병치료: 발생(추정)원인과 증상에 대하여 기재*사고/상해치료: 6하원칙에 입각한 상세경위 기재*제출하신 신청서는 규약에 의거 3년간 파일철로 보관되며, 외부로 유출되지 않음을 말씀드립니다."
+                />
+              </div>
+            </div>
+          </form>
+          <form
+            onSubmit={handleSubmitSignature}
+            className={styles.containerSignature}
+          >
+            <div className={styles.subTitle}>
+              <label className={styles.label}>서명</label>
+            </div>
+            <div className={styles.subInput}>
+              <input
+                className={styles.inputStyle}
+                type="text"
+                value={signature}
+                onChange={handleSignatureChange}
+                placeholder="한글로 이름입력"
+              />
+            </div>
+          </form>
+        </div>
+        <article>
+          <footer>
+            <Link
+              to="/deduction_home/deduction_apply3"
+              disabled={!isFormFilled()}
+            >
+              <button
+                className={styles.butt}
+                disabled={!isFormFilled()}
+                onClick={save}
+              >
+                <p className={styles.buttP}>신청</p>
+              </button>
+            </Link>
+          </footer>
+        </article>
+      </div>
     </>
   );
 }

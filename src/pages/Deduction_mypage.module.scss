@@ -1,20 +1,30 @@
-body {
-  margin: 0;
+.page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+  padding: 0;
+
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  background-color: #f7f7f7;
+
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .top {
   display: flex;
   flex-direction: row;
+  border-bottom: 1px solid;
+  border-color: black;
 }
 
 .title {
-  font-size: 20px;
-}
-
-.top {
-  border-bottom: 1px solid;
-  border-color: black;
+  font-size: 30px;
 }
 
 .bodyOne {
@@ -22,18 +32,26 @@ body {
   align-items: center;
   border-bottom: 1px solid;
   border-color: black;
+  height: 60%;
 }
 
 .profileImage {
   /* background-image: none; */
-  padding: 50px;
+  padding: 20px;
+}
+
+.image {
+  border-radius: 100px;
 }
 
 .user {
   font-weight: bold;
+  margin: 0px;
+  padding: 0px;
 }
 
 .email {
+  margin: 0px;
   padding-bottom: 20px;
   font-size: 15px;
   color: grey;
@@ -56,4 +74,14 @@ body {
 .bottomText {
   font-size: 12px;
   color: grey;
+}
+
+.butt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.buttP {
+  margin: 0px;
+  padding: 0px;
 }

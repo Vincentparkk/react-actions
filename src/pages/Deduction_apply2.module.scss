@@ -1,10 +1,28 @@
+.page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+  padding: 0;
+
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  background-color: #f7f7f7;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .top {
   display: flex;
   flex-direction: row;
 }
 
 .title {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .center {
@@ -13,7 +31,9 @@
   background: #e7e4e0;
   overflow-y: scroll;
   text-align: left;
-  padding: 10px;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 15px;
 }
 
 .container {
@@ -101,4 +121,19 @@ h2 {
 
 p {
   font-size: small;
+}
+
+.butt {
+  border-radius: 5px;
+  margin: 10px;
+  background-color: #e7e4e0;
+}
+
+.buttP {
+  font-size: 20px;
+  margin: 0px;
+}
+
+.label {
+  font-size: 14px;
 }
