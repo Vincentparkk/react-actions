@@ -4,7 +4,7 @@
   bottom: 0;
   width: 100%;
   max-width: 500px;
-  padding: 0 20px;
+  padding: 0;
 
   left: 50%;
   transform: translate(-50%, 0);
@@ -26,6 +26,7 @@
 .contentWrap {
   margin-top: 26px;
   flex: 1;
+  padding: 10%;
 }
 
 .inputTitle {
@@ -60,7 +61,7 @@
 }
 
 .bottomButton {
-  width: 100%;
+  width: 80%;
   height: 48px;
   border: none;
   font-weight: bold;
