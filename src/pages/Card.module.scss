@@ -1,0 +1,45 @@
+.pageContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.moviesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movieContainer {
+  width: 250px;
+  margin: 16px;
+  background-color: #c80150c8;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.movieContainer img {
+  max-width: 100%;
+}
+
+.movieInfo {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h4 {
+  margin: 0;
+  color: white;
+}
+
+.movieInfo span {
+  margin-left: 3px;
+}
+
+.wholePage {
+  display: flex;
+  flex-direction: row;
+}
