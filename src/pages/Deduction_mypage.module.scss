@@ -32,36 +32,39 @@
   align-items: center;
   border-bottom: 1px solid;
   border-color: black;
-  height: 60%;
+  height: 400px;
 }
 
 .profileImage {
   /* background-image: none; */
-  padding: 20px;
+  padding: 10px;
 }
 
 .image {
   border-radius: 100px;
+  width: 120px;
 }
 
 .user {
   font-weight: bold;
   margin: 0px;
   padding: 0px;
+  font-size: 15px;
 }
 
 .email {
   margin: 0px;
-  padding-bottom: 20px;
-  font-size: 15px;
+  padding-bottom: 0px;
+  font-size: 12px;
   color: grey;
 }
 
 .option {
   margin-bottom: 0px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 1px solid;
   border-color: black;
+  font-size: 15px;
 }
 
 .bottom {
@@ -72,7 +75,7 @@
 }
 
 .bottomText {
-  font-size: 12px;
+  font-size: 11px;
   color: grey;
 }
 
@@ -84,4 +87,5 @@
 .buttP {
   margin: 0px;
   padding: 0px;
+  font-size: 15px;
 }

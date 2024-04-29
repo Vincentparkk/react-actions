@@ -26,17 +26,16 @@
 }
 
 .DeductionIcon {
-  margin: 10px;
+  margin-top: 5px;
 }
 
 .Bar {
-  height: 40vh;
+  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-left: 5%;
   padding-right: 5%;
-  margin-top: 10px;
   margin-left: 12px;
   margin-right: 12px;
   background-color: #e7e4e0;
@@ -76,10 +75,12 @@
 
 .hhh {
   color: black;
+  margin: 0px;
 }
 
 .image {
   border-radius: 20px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  width: 200px;
 }

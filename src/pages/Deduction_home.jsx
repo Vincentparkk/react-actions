@@ -151,9 +151,7 @@ export default function Deduction_home() {
         </div>
 
         <div className={styles.Bar}>
-          <label style={{ paddingTop: 10, paddingBottom: 10, fontSize: 25 }}>
-            2024년-1학기
-          </label>
+          <label style={{ paddingTop: 10, fontSize: 25 }}>2024년-1학기</label>
           <label>전체 수혜금액 - {totalPrice / 10000}만원</label>
           <ProgressBar>
             <Progress width={(totalPrice / 500000) * 100} />
@@ -163,7 +161,7 @@ export default function Deduction_home() {
             <p className={styles.gaugeEnd}>50만원</p>
           </div>
 
-          <label style={{ paddingTop: 10 }}>
+          <label style={{ paddingTop: 2 }}>
             외래진료 수혜금액 - {totalPrice / 10000}만원
           </label>
           <ProgressBar>
