@@ -1,21 +1,36 @@
-import { Link } from "react-router-dom";
 import styles from "./Health_home.module.scss";
 import image1 from "./button_1_green.png";
 import image2 from "./button_2.png";
 import image3 from "./button_3.png";
-import healthcenter from "./healthcenter.png";
 import BackButton from "./Back_button";
+import { Link } from "react-router-dom";
 
-function Health() {
+function Health_3() {
+  const dummy = [
+    {
+      id: 7,
+      option: 2,
+      medicine: "(054)279-2620",
+      Symptom: "보건 선생님 연락처",
+      isDone: false,
+    },
+    {
+      id: 8,
+      option: 2,
+      medicine: "(054)279-8711",
+      Symptom: "안전팀 연락처",
+      isDone: false,
+    },
+  ];
   return (
     <>
       <div className={styles.page}>
         <div className={styles.top}>
           <BackButton destination="/card" />
-          <h1 className={styles.title}>보건실</h1>
+          <h1 className={styles.title}>보건실 기타</h1>
         </div>
         <div className={styles.buttons}>
-          <Link to="health_1">
+          <Link to="/health/health_1">
             <button className={styles.butt}>
               <img
                 style={{ width: "50px", height: "70px" }}
@@ -30,7 +45,7 @@ function Health() {
               </h3>
             </button>
           </Link>
-          <Link to="health_2">
+          <Link to="/health/health_2">
             <button className={styles.butt}>
               <img
                 style={{ width: "70px", height: "70px" }}
@@ -45,7 +60,7 @@ function Health() {
               </h3>
             </button>
           </Link>
-          <Link to="health_3">
+          <Link to="/health/health_3">
             <button className={styles.butt}>
               <img
                 style={{ width: "70px", height: "70px" }}
@@ -57,12 +72,19 @@ function Health() {
             </button>
           </Link>
         </div>
-        <div className={styles.time}>
-          <h1>약도 업데이트 예정</h1>
-        </div>
+        <table className={styles.table}>
+          <tbody>
+            {dummy.map((detail) => (
+              <tr key={detail.id} className={styles.list_day}>
+                <td>{detail.Symptom}</td>
+                <td>{detail.medicine}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
 }
 
-export default Health;
+export default Health_3;

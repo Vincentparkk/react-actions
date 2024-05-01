@@ -9,6 +9,9 @@ import Deduction_mypage from "./Deduction_mypage";
 import Deduction_mypage_modify from "./Deduction_mypage_modify";
 import Deduction_mypage_modify_success from "./Deduction_mypage_modify_success";
 import Health_home from "./Health_home";
+import Health_1 from "./Health_1";
+import Health_2 from "./Health_2";
+import Health_3 from "./Health_3";
 import Card from "./Card";
 import Login from "./Loginpage";
 
@@ -50,6 +53,9 @@ function Homepage() {
             element={<Deduction_mypage_modify_success />}
           />
           <Route path="health" element={<Health_home />} />
+          <Route path="health/health_1" element={<Health_1 />} />
+          <Route path="health/health_2" element={<Health_2 />} />
+          <Route path="health/health_3" element={<Health_3 />} />
         </Routes>
       </BrowserRouter>
     </>
