@@ -424,7 +424,7 @@ export default function Deduction_apply2(props) {
             <div className={styles.subInput}>
               <div className={styles.subCheckBox}>
                 <Checkbox checked={paper1} onChange={setPaper1}>
-                  <span style={{ fontSize: "9px" }}>진료비계산서</span>
+                  <span style={{ fontSize: "9px" }}>진료비계산서 왜 안됨?</span>
                 </Checkbox>
                 <Checkbox checked={paper2} onChange={setPaper2}>
                   <span style={{ fontSize: "9px" }}>결제영수증(진료비)</span>
