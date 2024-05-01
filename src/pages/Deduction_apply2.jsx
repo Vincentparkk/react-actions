@@ -58,6 +58,19 @@ export default function Deduction_apply2(props) {
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedDegree, setSelectedDegree] = useState("");
 
+  const [emailValid, setEmailValid] = useState(true);
+  const [priceValid, setPriceValid] = useState(true);
+  const [treatmentDateValid, setTreatmentDateValid] = useState(true);
+  const [notAllow, setNotAllow] = useState(true);
+  console.log(notAllow);
+  useEffect(() => {
+    if (emailValid && priceValid && treatmentDateValid) {
+      setNotAllow(false);
+      return;
+    }
+    setNotAllow(true);
+  }, [emailValid, priceValid, treatmentDateValid]);
+
   const handleSelectDepartment = (event) => {
     setSelectedDepartment(event.target.value);
   };
@@ -76,13 +89,37 @@ export default function Deduction_apply2(props) {
   const handleNameChange = (event) => setName(event.target.value);
   const handleStudentIdChange = (event) => setStudentId(event.target.value);
   const handlePhoneNumberChange = (event) => setPhoneNumber(event.target.value);
-  const handleEmailChange = (event) => setEmail(event.target.value);
-  const handleTreatmentDateChange = (event) =>
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    const regex =
+      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+    if (regex.test(event.target.value)) {
+      setEmailValid(true);
+    } else {
+      setEmailValid(false);
+    }
+  };
+  const handleTreatmentDateChange = (event) => {
     setTreatmentDate(event.target.value);
+    const regex = /^\d{2}\.\d{2}\.\d{2}$/;
+    if (regex.test(event.target.value)) {
+      setTreatmentDateValid(true);
+    } else {
+      setTreatmentDateValid(false);
+    }
+  };
   const handleBankChange = (event) => setBank(event.target.value);
   const handleAccountNumberChange = (event) =>
     setAccountNumber(event.target.value);
-  const handlePriceChange = (event) => setPrice(event.target.value);
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+    const regex = /^[1-9]\d{4,}$/;
+    if (regex.test(event.target.value)) {
+      setPriceValid(true);
+    } else {
+      setPriceValid(false);
+    }
+  };
   const handleHospitalChange = (event) => setHospital(event.target.value);
   const handleDiseaseChange = (event) => setDisease(event.target.value);
   const handleReasonChange = (event) => setReason(event.target.value);
@@ -370,11 +407,13 @@ export default function Deduction_apply2(props) {
               />
             </div>
             <div className={styles.subTitle}>
-              <label>E-mail</label>
+              <label className={styles.label}>E-mail</label>
             </div>
             <div className={styles.subInput}>
               <input
-                className={styles.inputStyle}
+                className={`${
+                  emailValid ? styles.inputStyle : styles.invalidInput
+                }`}
                 type="text"
                 value={email}
                 onChange={handleEmailChange}
@@ -424,7 +463,7 @@ export default function Deduction_apply2(props) {
             <div className={styles.subInput}>
               <div className={styles.subCheckBox}>
                 <Checkbox checked={paper1} onChange={setPaper1}>
-                  <span style={{ fontSize: "9px" }}>진료비계산서 왜 안됨?</span>
+                  <span style={{ fontSize: "9px" }}>진료비계산서</span>
                 </Checkbox>
                 <Checkbox checked={paper2} onChange={setPaper2}>
                   <span style={{ fontSize: "9px" }}>결제영수증(진료비)</span>
@@ -479,7 +518,9 @@ export default function Deduction_apply2(props) {
             </div>
             <div className={styles.subInput}>
               <input
-                className={styles.inputStyle}
+                className={`${
+                  priceValid ? styles.inputStyle : styles.invalidInput
+                }`}
                 type="text"
                 value={price}
                 onChange={handlePriceChange}
@@ -507,7 +548,9 @@ export default function Deduction_apply2(props) {
             </div>
             <div className={styles.subInput}>
               <input
-                className={styles.inputStyle}
+                className={`${
+                  treatmentDateValid ? styles.inputStyle : styles.invalidInput
+                }`}
                 type="text"
                 value={treatmentDate}
                 onChange={handleTreatmentDateChange}
@@ -581,7 +624,7 @@ export default function Deduction_apply2(props) {
             >
               <button
                 className={styles.butt}
-                disabled={!isFormFilled()}
+                disabled={!isFormFilled() || notAllow}
                 onClick={save}
               >
                 <p className={styles.buttP}>신청</p>

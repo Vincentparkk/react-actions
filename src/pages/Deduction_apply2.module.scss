@@ -110,6 +110,17 @@
   border: 2px solid rgba(0, 0, 0, 0.23);
   border-radius: 4px;
 }
+:focus {
+  border-color: #c80150c8;
+  outline: none;
+}
+
+.invalidInput {
+  border: 2px solid red;
+  height: 27px;
+  width: 100%;
+  border-radius: 4px;
+}
 
 h1 {
   font-size: large;
