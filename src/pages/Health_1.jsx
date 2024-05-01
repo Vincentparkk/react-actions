@@ -61,7 +61,7 @@ function Health_1() {
           </div>
         </div>
         <div className={styles.time}>
-          <img style={{ width: "90%", height: "50%" }} src={timetable} />
+          <img style={{ width: "90%", height: "80%" }} src={timetable} />
         </div>
       </div>
     </>
