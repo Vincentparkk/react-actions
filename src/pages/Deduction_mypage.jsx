@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 
 export default function Deduction_mypage() {
   const [name, setName] = useState("박산경");
+  const [email, setEmail] = useState("ime.park@postech.ac.kr");
   useEffect(() => {
     const fetchPreviousApply = async () => {
       try {
@@ -14,6 +15,7 @@ export default function Deduction_mypage() {
           "https://juniper-colossal-mail.glitch.me/personalInfo"
         );
         setName(response.data[0].name);
+        setEmail(response.data[0].email);
       } catch (error) {
         console.error("Failed to fetch previousApply data:", error);
       }
@@ -33,7 +35,7 @@ export default function Deduction_mypage() {
             <img className={styles.image} src={imeImage} />
           </div>
           <p className={styles.user}>{name}</p>
-          <p className={styles.email}>ime.park@postech.ac.kr</p>
+          <p className={styles.email}>{email}</p>
         </div>
 
         <p className={styles.option}>

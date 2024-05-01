@@ -424,21 +424,21 @@ export default function Deduction_apply2(props) {
             <div className={styles.subInput}>
               <div className={styles.subCheckBox}>
                 <Checkbox checked={paper1} onChange={setPaper1}>
-                  <span style={{ fontSize: "12px" }}>진료비계산서</span>
+                  <span style={{ fontSize: "9px" }}>진료비계산서</span>
                 </Checkbox>
                 <Checkbox checked={paper2} onChange={setPaper2}>
-                  <span style={{ fontSize: "12px" }}>결제영수증(진료비)</span>
+                  <span style={{ fontSize: "9px" }}>결제영수증(진료비)</span>
                 </Checkbox>
                 <Checkbox checked={paper3} onChange={setPaper3}>
-                  <span style={{ fontSize: "12px" }}>약제비계산서</span>
+                  <span style={{ fontSize: "9px" }}>약제비계산서</span>
                 </Checkbox>
               </div>
               <div className={styles.subCheckBox}>
                 <Checkbox checked={paper4} onChange={setPaper4}>
-                  <span style={{ fontSize: "12px" }}>결제영수증(약제비)</span>
+                  <span style={{ fontSize: "9px" }}>결제영수증(약제비)</span>
                 </Checkbox>
                 <Checkbox checked={paper5} onChange={setPaper5}>
-                  <span style={{ fontSize: "12px" }}>
+                  <span style={{ fontSize: "9px" }}>
                     진료확인서(특별청구시)
                   </span>
                 </Checkbox>
