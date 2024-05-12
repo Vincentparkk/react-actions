@@ -3,6 +3,8 @@ import styles from "./Health_home.module.scss";
 import image1 from "./button_1_green.png";
 import image2 from "./button_2.png";
 import image3 from "./button_3.png";
+import image4 from "./healthmap.png";
+import image5 from "./healthrealpicture.jpg";
 import BackButton from "./Back_button";
 
 function Health() {
@@ -60,7 +62,8 @@ function Health() {
           </div>
         </div>
         <div className={styles.time}>
-          <h1>약도 업데이트 예정</h1>
+          <img style={{ width: "90%", height: "40%" }} src={image4} />
+          <img style={{ width: "90%", height: "40%" }} src={image5} />
         </div>
       </div>
     </>
